@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 import styles from "./game.module.scss";
 import { useInterval } from "../../../customHooks/useInterval";
 import Button from "../../atoms/Button";
@@ -20,7 +21,7 @@ const PLAYER_MOVEMENT_INTERNAL = 55;
 
 const maxPosition = 94;
 const minPosition = 0;
-const getValidPosition = (position) => {
+export const getValidPosition = (position) => {
   const intPosition = parseInt(position);
   if (intPosition >= maxPosition) {
     return minPosition;
@@ -190,6 +191,13 @@ const Game = () => {
         isDarkTheme ? styles.gameContainer__dark : styles.gameContainer__light
       }
     >
+      <Head>
+        <title>Brain Feast | Aashutosh Prakash</title>
+        <meta
+          name="description"
+          content="Brain Feast — a small ReactJS game on Aashutosh Prakash's profile."
+        />
+      </Head>
       <BackButton isDarkTheme={isDarkTheme} />
       <Heading content={content.heading} Type="h1" />
       <p className={styles.description}>{content.description}</p>

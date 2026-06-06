@@ -12,8 +12,9 @@ const content = {
   gameEmoji: "🎮",
   // description: "I'm an experienced UI Developer and a cloud enthusiast.",
   description:
-    "I’m specialized in Front-End Transformation, with a passion for Cloud Technologies.",
+    "I’m specialized in AI Front-End Transformation, with a passion for Cloud Technologies.",
   buttonContent: "Let's Connect",
+  x: "https://x.com/Aashutosh_94",
   note: "NOTE: Site support device dark mode."
 };
 
@@ -37,6 +38,14 @@ const InfoCard = () => {
         type="button"
         handler={handleConnect}
       />
+      <a
+        className={styles.infoCard__social}
+        href={content.x}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Find me on 𝕏
+      </a>
       <p className={styles.infoCard__note}>{content.note}</p>
     </>
   );
