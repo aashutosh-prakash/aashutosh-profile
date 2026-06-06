@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import InfoCard from "./InfoCard";
 
 describe("InfoCard", () => {
@@ -21,31 +20,22 @@ describe("InfoCard", () => {
     expect(developer).not.toHaveAttribute("rel");
   });
 
-  it("links to X, opening safely in a new tab", () => {
+  it("links to LinkedIn via an icon, opening safely in a new tab", () => {
     render(<InfoCard />);
-    const x = screen.getByRole("link", { name: /find me on/i });
+    const linkedin = screen.getByRole("link", { name: /connect on linkedin/i });
+    expect(linkedin).toHaveAttribute(
+      "href",
+      "https://www.linkedin.com/in/aashutoshprakash/"
+    );
+    expect(linkedin).toHaveAttribute("target", "_blank");
+    expect(linkedin).toHaveAttribute("rel", "noopener noreferrer");
+  });
+
+  it("links to X via an icon, opening safely in a new tab", () => {
+    render(<InfoCard />);
+    const x = screen.getByRole("link", { name: /find me on x/i });
     expect(x).toHaveAttribute("href", "https://x.com/Aashutosh_94");
     expect(x).toHaveAttribute("target", "_blank");
     expect(x).toHaveAttribute("rel", "noopener noreferrer");
-  });
-
-  it("'Let's Connect' navigates to the LinkedIn profile", async () => {
-    const hrefSetter = jest.fn();
-    Object.defineProperty(window, "location", {
-      configurable: true,
-      value: {
-        set href(value) {
-          hrefSetter(value);
-        },
-      },
-    });
-
-    render(<InfoCard />);
-    await userEvent.click(
-      screen.getByRole("button", { name: "Let's Connect" })
-    );
-    expect(hrefSetter).toHaveBeenCalledWith(
-      "https://www.linkedin.com/in/aashutoshprakash/"
-    );
   });
 });

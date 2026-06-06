@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import Button from "../../atoms/Button";
 import Heading from "../../atoms/Heading";
+import LinkedInIcon from "../../atoms/icons/LinkedInIcon";
+import XIcon from "../../atoms/icons/XIcon";
 import styles from "./info-card.module.scss";
 
 const content = {
@@ -10,18 +11,14 @@ const content = {
   developer: "DEVELOPER",
   devEmoji: "👨‍💻",
   gameEmoji: "🎮",
-  // description: "I'm an experienced UI Developer and a cloud enthusiast.",
   description:
     "I’m specialized in AI Front-End Transformation, with a passion for Cloud Technologies.",
-  buttonContent: "Let's Connect",
+  linkedIn: "https://www.linkedin.com/in/aashutoshprakash/",
   x: "https://x.com/Aashutosh_94",
-  note: "NOTE: Site support device dark mode."
+  note: "NOTE: Site support device dark mode.",
 };
 
 const InfoCard = () => {
-  const handleConnect = () => {
-    window.location.href = "https://www.linkedin.com/in/aashutoshprakash/";
-  };
   return (
     <>
       <p>{content.greeting}</p>
@@ -33,19 +30,26 @@ const InfoCard = () => {
       {content.gameEmoji}
       {content.devEmoji}
       <p className={styles.infoCard__description}>{content.description}</p>
-      <Button
-        content={content.buttonContent}
-        type="button"
-        handler={handleConnect}
-      />
-      <a
-        className={styles.infoCard__social}
-        href={content.x}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Find me on 𝕏
-      </a>
+      <div className={styles.infoCard__socials}>
+        <a
+          className={styles.infoCard__linkedin}
+          href={content.linkedIn}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Connect on LinkedIn"
+        >
+          <LinkedInIcon />
+        </a>
+        <a
+          className={styles.infoCard__x}
+          href={content.x}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Find me on X"
+        >
+          <XIcon />
+        </a>
+      </div>
       <p className={styles.infoCard__note}>{content.note}</p>
     </>
   );

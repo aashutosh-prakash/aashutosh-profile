@@ -14,15 +14,28 @@ $text-color: #0070f3;
     font-size: 16px;
     cursor: pointer;
   }
-  &__social {
-    display: inline-block;
-    margin: 4px 0 8px;
-    color: $text-color;
-    font-size: 14px;
-    text-decoration: none;
+  &__socials {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 18px 0 8px;
+  }
+  &__linkedin,
+  &__x {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    transition: opacity 0.15s ease;
     &:hover {
-      text-decoration: underline;
+      opacity: 0.7;
     }
+  }
+  &__linkedin {
+    color: #0a66c2;
+  }
+  &__x {
+    color: inherit;
   }
   &__note {
     font-size: 12px;
